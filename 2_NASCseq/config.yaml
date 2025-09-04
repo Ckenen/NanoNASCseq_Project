@@ -1,0 +1,14 @@
+GENOME_FASTA: /home/chenzonggui/species/homo_sapiens/GRCh38.p13/GRCh38.canonical.genome.fa
+GENOME_GTF: /home/chenzonggui/species/homo_sapiens/GRCh38.p13/gencode.v39.annotation.sorted.gtf
+TRANSCRIPT_BED_GZ: /home/chenzonggui/species/homo_sapiens/GRCh38.p13/gencode.v39.annotation.transcripts.bed.gz
+TRANSCRIPT_INFO_TSV: /home/chenzonggui/species/homo_sapiens/GRCh38.p13/gencode.v39.transcript_info.tsv
+SNP_BED_GZ: /home/chenzonggui/species/homo_sapiens/hg38/snp151.3.lite.bed.gz
+BOWTIE2_INDEX_RIBO: /home/chenzonggui/species/homo_sapiens/ncbi/bt2_rrna_index
+STAR_GENOME: /home/chenzonggui/species/genome_index/STAR_2.7.9a/star_genome_GRCh38.p13.canonical_gencode.v39
+RUNS:
+ - 20220113_NASCseq
+ - 20220321_NASCseq
+ - 20220418_NASCseq
+ - GSE128273_NASCseq
+ - GSE128273_NASCseq_SE
+
