@@ -1,0 +1,46 @@
+name: cutadapt
+channels:
+  - conda-forge
+  - r
+  - bioconda
+  - defaults
+dependencies:
+  - _libgcc_mutex=0.1=conda_forge
+  - _openmp_mutex=4.5=2_gnu
+  - bzip2=1.0.8=hd590300_5
+  - ca-certificates=2024.2.2=hbcca054_0
+  - cffi=1.16.0=py39h7a31438_0
+  - cutadapt=3.5=py39hbf8eff0_1
+  - dnaio=1.2.0=py39hf95cd2a_1
+  - isa-l=2.31.0=hd590300_1
+  - ld_impl_linux-64=2.40=h41732ed_0
+  - libffi=3.4.2=h7f98852_5
+  - libgcc-ng=13.2.0=h807b86a_5
+  - libgomp=13.2.0=h807b86a_5
+  - libnsl=2.0.1=hd590300_0
+  - libsqlite=3.45.2=h2797004_0
+  - libstdcxx-ng=13.2.0=h7e041cc_5
+  - libuuid=2.38.1=h0b41bf4_0
+  - libxcrypt=4.4.36=hd590300_1
+  - libzlib=1.2.13=hd590300_5
+  - ncurses=6.4.20240210=h59595ed_0
+  - openssl=3.2.1=hd590300_1
+  - pbzip2=1.1.13=h1fcc475_2
+  - pigz=2.8=h2797004_0
+  - pip=24.0=pyhd8ed1ab_0
+  - pycparser=2.22=pyhd8ed1ab_0
+  - python=3.9.19=h0755675_0_cpython
+  - python-isal=1.6.1=py39hd1e30aa_0
+  - python-zlib-ng=0.4.1=py39h520f041_0
+  - python_abi=3.9=4_cp39
+  - readline=8.2=h8228510_1
+  - setuptools=69.2.0=pyhd8ed1ab_0
+  - tk=8.6.13=noxft_h4845f30_101
+  - tzdata=2024a=h0c530f3_0
+  - wheel=0.43.0=pyhd8ed1ab_1
+  - xopen=2.0.1=py39hf3d152e_0
+  - xz=5.2.6=h166bdaf_0
+  - zlib-ng=2.0.7=h0b41bf4_0
+  - zstandard=0.22.0=py39h6e5214e_0
+  - zstd=1.5.5=hfc55251_0
+prefix: /lustre/grp/tfclab/chenzg/miniconda3/envs/cutadapt
