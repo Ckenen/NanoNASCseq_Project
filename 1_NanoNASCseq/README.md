@@ -23,3 +23,6 @@ Run the following commands step by step to reproduce the analysis process.
     snakemake -s 4_SnakeMismatch.smk -j
     snakemake -s 5_SnakeExpression.smk -j
 
+Schematic of the workflow:
+
+![Workflow](./data/NanoNASCseq_Workflow.png)
