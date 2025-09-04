@@ -1,0 +1,13 @@
+SAMPLES:
+#  - GSM1967863_K562_TTSeq_rep1_test
+ - GSM1967863_K562_TTSeq_rep1 # 
+ - GSM1967864_K562_TTSeq_rep2 # 
+ - GSM4086533_K562_TTseq_rep1
+ - GSM4086535_K562_TTseq_rep2
+ - GSM5437262_K562_control_TTseq_rep1
+ - GSM5437263_K562_control_TTseq_rep2
+GENOME_FASTA: /home/chenzonggui/species/homo_sapiens/GRCh38.p13/GRCh38.canonical.genome.fa
+GENOME_GTF: /home/chenzonggui/species/homo_sapiens/GRCh38.p13/gencode.v39.annotation.sorted.gtf
+RIBO_FASTA: /home/chenzonggui/species/homo_sapiens/ncbi/ribosomal_rna.fasta
+TRANSCRIPT_BED_GZ: /home/chenzonggui/species/homo_sapiens/GRCh38.p13/gencode.v39.annotation.transcripts.bed.gz
+

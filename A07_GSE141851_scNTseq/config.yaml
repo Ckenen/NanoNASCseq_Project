@@ -1,0 +1,56 @@
+SAMPLES:
+ - SRR10670112_Mix-4sU
+ - SRR10670113_Mix-4sU-TFEA
+ - SRR10670114_Mix-4sU-IAA
+ - SRR11683967_Cortical-KCl-0min
+ - SRR11683968_Cortical-KCl-15min
+ - SRR11683969_Cortical-KCl-30min
+ - SRR11683970_Cortical-KCl-60min
+ - SRR11683971_Cortical-KCl-120min
+ - SRR11683972_mESC-chase-0h-rep1
+ - SRR11683973_mESC-chase-0.5h-rep1
+ - SRR11683974_mESC-chase-1h-rep1
+ - SRR11683975_mESC-chase-3h-rep1
+ - SRR11683976_mESC-chase-6h-rep1
+ - SRR11683977_mESC-chase-12h-rep1
+ - SRR11683978_mESC-chase-24h-rep1
+ - SRR11683979_mESC-chase-0h-rep2
+ - SRR11683980_mESC-chase-0.5h-rep2
+ - SRR11683981_mESC-chase-1h-rep2
+ - SRR11683982_mESC-chase-3h-rep2
+ - SRR11683983_mESC-chase-6h-rep2
+ - SRR11683984_mESC-chase-12h-rep2
+ - SRR11683985_mESC-chase-24h-rep2
+ - SRR11683986_mESC-WT-rep1
+ - SRR11683987_mESC-WT-rep2
+ - SRR11683988_mESC-TKO-rep1
+ - SRR11683989_mESC-TKO-rep2
+ - SRR11683990_K562-4sU
+ - SRR11683991_K562-TFEA
+ - SRR11683992_K562-4sU-TFEA
+ - SRR11683993_K562-4sU-2ndSS
+ - SRR11683994_K562-TFEA-2ndSS
+ - SRR11683995_K562-4sU-TFEA-2ndSS
+ - SRR12225121_mESC-TFEA
+ - SRR12225122_mESC-4sU
+ - SRR12225123_mESC-4sU-TFEA
+ - SRR12225124_mESC-4sU-TFEA-fresh
+ - SRR12225125_mESC-4sU-TFEA-PBS
+ - SRR12225126_mESC-4sU-TFEA-SSC
+ 
+DROPSEQ_JAR: ./software/Drop-seq_tools-1.12/jar/dropseq.jar
+SCRIPT_ROOT: ./software/scNT-seq-master/TC_calling/scripts
+
+HUMAN_GENOME_FASTA: /home/chenzonggui/species/homo_sapiens/GRCh38.p13/GRCh38.canonical.genome.fa
+HUMAN_ANNOTATION_GTF: /home/chenzonggui/species/homo_sapiens/GRCh38.p13/gencode.v39.annotation.sorted.gtf
+HUMAN_STAR_GENOME: /home/chenzonggui/species/genome_index/STAR_2.7.9a/star_genome_GRCh38.p13.canonical_gencode.v39
+HUMAN_TRANSCRIPT_BED_GZ: /home/chenzonggui/species/homo_sapiens/GRCh38.p13/gencode.v39.annotation.transcripts.bed.gz
+
+MOUSE_GENOME_FASTA: /home/chenzonggui/species/mus_musculus/GRCm38.p6/GRCm38.canonical.genome.fa
+MOUSE_ANNOTATION_GTF: /home/chenzonggui/species/mus_musculus/GRCm38.p6/gencode.vM25.annotation.sorted.gtf
+MOUSE_STAR_GENOME: /home/chenzonggui/species/genome_index/STAR_2.7.9a/star_genome_GRCm38.p6.canonical_gencode.vM25
+
+MIX_GENOME_FASTA: /home/chenzonggui/species/mix_hg38_mm10/GRCh38.p13_GRCm38.p6.fa
+MIX_ANNOTATION_GTF: /home/chenzonggui/species/mix_hg38_mm10/gencode.v39_vM25.sorted.gtf
+MIX_STAR_GENOME: /home/chenzonggui/species/genome_index/STAR_2.7.9a/star_genome_GRCh38.p13_GRCm38.p6.canonical_gencode.v39_vM25
+

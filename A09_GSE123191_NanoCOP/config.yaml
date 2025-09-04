@@ -1,0 +1,10 @@
+SAMPLES:
+ - K562_4sUchr_ONT_1
+ - K562_4sUchr_ONT_2
+ - K562_4sUchr_ONT_3
+ - K562_4sUchr_ONT_noA
+MINIMAP2_GENOME: /home/chenzonggui/species/homo_sapiens/GRCh38.p13/GRCh38.canonical.mm2.splice.mmi
+TRANSCRIPT_BED: /home/chenzonggui/species/homo_sapiens/GRCh38.p13/gencode.v39.annotation.transcripts.bed
+TRANSCRIPT_BED_GZ: /home/chenzonggui/species/homo_sapiens/GRCh38.p13/gencode.v39.annotation.transcripts.bed.gz
+HUMAN_GENOME_FASTA: /home/chenzonggui/species/homo_sapiens/GRCh38.p13/GRCh38.canonical.genome.fa
+HUMAN_ANNOTATION_GTF: /home/chenzonggui/species/homo_sapiens/GRCh38.p13/gencode.v39.annotation.sorted.gtf

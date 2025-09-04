@@ -1,0 +1,1 @@
+/home/chenzonggui/2_Nanopore-Nascent-RNAseq-Project/1_FLAIRseq/scripts/signal2noise/estimate_pc.py

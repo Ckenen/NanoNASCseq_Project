@@ -1,0 +1,10 @@
+SAMPLES:
+ - SRR13120810_3T3_HEK293_1000cells
+ - SRR13397411_3T3_HEK293_500cells
+ - SRR13397412_Myeloma_500cells
+ - SRR13397413_Myeloma_500cells
+ - SRR13397414_Ewings_500cells
+ - SRR13509039_Myeloma_1200cells
+GENOME_FASTA: /home/chenzonggui/species/mix_hg38_mm10/GRCh38.p13_GRCm38.p6.fa
+TRANSCRIPT_BED: /home/chenzonggui/species/mix_hg38_mm10/gencode.v39_vM25.transcripts.bed
+TRANSCRIPT_BED_GZ: /home/chenzonggui/species/mix_hg38_mm10/gencode.v39_vM25.transcripts.bed.gz

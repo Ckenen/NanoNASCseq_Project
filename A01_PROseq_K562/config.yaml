@@ -1,0 +1,9 @@
+SAMPLES:
+ - GSM1480327_K562_PROseq # SRR1554311 and SRR1554312
+ - GSM2361442_K562_PROseq_NHS_Rep1
+ - GSM2361443_K562_PROseq_NHS_Rep2
+ - GSM2545324_K562_PROseq_preseq_0min_plus_rep1
+ - GSM2545325_K562_PROseq_preseq_0min_plus_rep2
+ - GSM3452725_K562_PROseq
+RIBO_BOWTIE2_INDEX: /home/chenzonggui/species/homo_sapiens/ncbi/bt2_rrna_index
+GENOME_STAR_INDEX: /home/chenzonggui/species/genome_index/STAR_2.7.9a/star_genome_GRCh38.p13.canonical_gencode.v39
