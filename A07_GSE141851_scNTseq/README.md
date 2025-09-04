@@ -1,4 +1,4 @@
-# scNT-seq (GSE141851)
+# Analysis scNT-seq (GSE141851)
 
-K562 (homo sapiens)
+The datasets were downloaded from GSE141851 (K562, Homo sapiens).
 
