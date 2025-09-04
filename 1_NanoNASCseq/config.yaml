@@ -1,0 +1,248 @@
+RUNS_K562:
+ - 20220719_K562_1
+ - 20220719_K562_2
+ - 20220719_K562_3
+ - 20220719_K562_4
+ - 20220729_K562_1
+ - 20220729_K562_2
+ - 20220729_K562_3 # Contain 6 mouse blastocyst cells
+ - 20221014_K562_1 # R10.4.1
+ - 20221014_K562_2 # R10.4.1
+RUNS_K562_ACTD:
+ - 20220719_K562_ActD_1 # s4U: 0 uM 3 h, ActD: 3h
+ - 20220719_K562_ActD_2 # s4U: 50 uM 3 h, ActD: 3h
+ - 20220719_K562_ActD_3 # s4U: 0 uM 3 h, ActD: 6h
+ - 20220719_K562_ActD_4 # s4U: 50 uM 3 h, ActD: 6h
+RUNS_K562_FUCCI:
+ - 20241204_FUCCI_G1_1
+ - 20241205_FUCCI_G1_3
+ - 20241206_FUCCI_G1_4
+ - 20241217_FUCCI_G1_5
+ - 20241219_FUCCI_G1_6 # contain some S early
+ - 20241206_FUCCI_S_1
+ - 20241206_FUCCI_S_2
+ - 20241211_FUCCI_S_3
+ - 20241210_FUCCI_S_4
+ - 20241213_FUCCI_S_5
+ - 20241219_FUCCI_S_6
+ - 20241218_FUCCI_S_7 # contain some G2M
+ - 20241219_FUCCI_S_8
+ - 20241209_FUCCI_G2M_1
+ - 20241220_FUCCI_G2M_2
+ - 20241220_FUCCI_G2M_3
+ - 20241218_FUCCI_G2M_4
+ - 20241220_FUCCI_G2M_5
+RUNS_MESC:
+ - 20220818_mESC_1
+ - 20220818_mESC_2
+ - 20220818_mESC_3
+RUNS_MESC_EXOSC2:
+ - 20241204_Exosome_1
+ - 20241209_Exosome_2
+ - 20241205_Exosome_3
+ - 20241210_Exosome_5
+ - 20241211_Exosome_6
+ - 20241212_Exosome_4
+ - 20241211_Exosome_7
+ - 20241211_Exosome_8
+ - 20241211_Exosome_9
+ - 20241215_Exosome_10
+ - 20241215_Exosome_11
+ - 20241213_Exosome_12
+ - 20241212_Exosome_13
+ - 20241212_Exosome_14
+ - 20241216_Exosome_15
+ - 20241216_Exosome_16
+ - 20241217_Exosome_17
+ - 20241218_Exosome_18
+ - 20241219_Exosome_19
+ - 20241218_Exosome_20
+RUNS_MIX: # Mixed K562 and mESC
+ - 20241121_Mix_1
+ - 20241121_Mix_2
+ - 20241122_Mix_3
+RUNS_MOUSE_BLASTOCYST:
+ - 20220729_Blastocyst
+ - 20220808_Blastocyst
+ - 20220817_Blastocyst
+ - 20220820_Blastocyst_23 # Contain some mESC cells
+ - 20220823_Blastocyst_25
+ - 20220824_Blastocyst_25
+ - 20220831_Blastocyst_26
+ - 20220902_Blastocyst_30
+ - 20220903_Blastocyst_31
+ - 20220924_Blastocyst_35
+ - 20221008_Blastocyst_38
+ - 20221018_Blastocyst_41
+ - 20221019_Blastocyst_43
+ - 20221031_Blastocyst_45
+ - 20221031_Blastocyst_46
+ - 20221120_Blastocyst_50
+ - 20221122_Blastocyst_52
+ - 20221126_Blastocyst_54
+ - 20221127_Blastocyst_55
+ - 20221128_Blastocyst_57
+ - 20221129_Blastocyst_56
+ - 20221207_Blastocyst_59
+ - 20221207_Blastocyst_58
+ - 20221207_Blastocyst_60
+ - 20221217_Blastocyst_70
+ - 20221217_Blastocyst_73
+ - 20221217_Blastocyst_74
+ - 20221217_Blastocyst_75
+ - 20221217_Blastocyst_76
+ - 20221218_Blastocyst_64
+ - 20221218_Blastocyst_67
+ - 20221218_Blastocyst_69
+ - 20221222_Blastocyst_68
+ - 20221222_Blastocyst_71
+ - 20221222_Blastocyst_72
+ - 20230101_Blastocyst_77
+ - 20230101_Blastocyst_78
+ - 20230103_Blastocyst_79
+ - 20230103_Blastocyst_80
+ - 20230103_Blastocyst_81
+ - 20230105_Blastocyst_83
+ - 20230108_Blastocyst_82
+ - 20230220_Blastocyst_85
+ - 20230220_Blastocyst_86
+ - 20230220_Blastocyst_87
+ - 20230220_Blastocyst_88
+ 
+# RUNS_K562:
+#  - 20220719_K562_1
+#  - 20220719_K562_2
+#  - 20220719_K562_3
+#  - 20220719_K562_4
+#  - 20220719_K562_ActD_1 # s4U: 0 uM 3 h, ActD: 3h
+#  - 20220719_K562_ActD_2 # s4U: 50 uM 3 h, ActD: 3h
+#  - 20220719_K562_ActD_3 # s4U: 0 uM 3 h, ActD: 6h
+#  - 20220719_K562_ActD_4 # s4U: 50 uM 3 h, ActD: 6h
+#  - 20220729_K562_1
+#  - 20220729_K562_2
+#  - 20220729_K562_3 # Contain some mouse blastocyst cells
+#  - 20221014_K562_1 # R10.4.1
+#  - 20221014_K562_2 # R10.4.1
+#  - 20241121_Mix_1 # Mixed K562 and mESC
+#  - 20241121_Mix_2 # Mixed K562 and mESC
+#  - 20241122_Mix_3 # Mixed K562 and mESC
+#  - 20241204_FUCCI_G1_1 # NuoHe
+# # - 20241204_FUCCI_G1_2 # WeiLaiZu, ignored
+#  - 20241205_FUCCI_G1_3
+#  - 20241206_FUCCI_G1_4
+#  - 20241217_FUCCI_G1_5
+#  - 20241219_FUCCI_G1_6 # contain some S early
+#  - 20241206_FUCCI_S_1
+#  - 20241206_FUCCI_S_2
+#  - 20241211_FUCCI_S_3
+#  - 20241210_FUCCI_S_4
+#  - 20241213_FUCCI_S_5
+#  - 20241219_FUCCI_S_6
+#  - 20241218_FUCCI_S_7 # contain some G2M
+#  - 20241219_FUCCI_S_8
+#  - 20241209_FUCCI_G2M_1
+#  - 20241220_FUCCI_G2M_2
+#  - 20241220_FUCCI_G2M_3
+#  - 20241218_FUCCI_G2M_4
+#  - 20241220_FUCCI_G2M_5
+# RUNS_MESC:
+#  - 20220818_mESC_1
+#  - 20220818_mESC_2
+#  - 20220818_mESC_3
+#  - 20241204_Exosome_1
+#  - 20241209_Exosome_2
+#  - 20241205_Exosome_3
+#  - 20241210_Exosome_5
+#  - 20241211_Exosome_6
+#  - 20241212_Exosome_4
+#  - 20241211_Exosome_7
+#  - 20241211_Exosome_8
+#  - 20241211_Exosome_9
+#  - 20241215_Exosome_10
+#  - 20241215_Exosome_11
+#  - 20241213_Exosome_12
+#  - 20241212_Exosome_13
+#  - 20241212_Exosome_14 # Check AID time
+#  - 20241216_Exosome_15
+#  - 20241216_Exosome_16
+#  - 20241217_Exosome_17
+#  - 20241218_Exosome_18
+#  - 20241219_Exosome_19
+#  - 20241218_Exosome_20
+# RUNS_MOUSE_BLASTOCYST:
+#  - 20220729_Blastocyst
+#  - 20220808_Blastocyst
+#  - 20220817_Blastocyst
+#  - 20220820_Blastocyst_23 # Contain some mESC cells
+#  - 20220823_Blastocyst_25
+#  - 20220824_Blastocyst_25
+#  - 20220831_Blastocyst_26
+#  - 20220902_Blastocyst_30
+#  - 20220903_Blastocyst_31
+#  - 20220924_Blastocyst_35
+#  - 20221008_Blastocyst_38
+#  - 20221018_Blastocyst_41
+#  - 20221019_Blastocyst_43
+#  - 20221031_Blastocyst_45
+#  - 20221031_Blastocyst_46
+#  - 20221120_Blastocyst_50
+#  - 20221122_Blastocyst_52
+#  - 20221126_Blastocyst_54
+#  - 20221127_Blastocyst_55
+#  - 20221128_Blastocyst_57
+#  - 20221129_Blastocyst_56
+#  - 20221207_Blastocyst_59
+#  - 20221207_Blastocyst_58
+#  - 20221207_Blastocyst_60
+#  - 20221217_Blastocyst_70
+#  - 20221217_Blastocyst_73
+#  - 20221217_Blastocyst_74
+#  - 20221217_Blastocyst_75
+#  - 20221217_Blastocyst_76
+#  - 20221218_Blastocyst_64
+#  - 20221218_Blastocyst_67
+#  - 20221218_Blastocyst_69
+#  - 20221222_Blastocyst_68
+#  - 20221222_Blastocyst_71
+#  - 20221222_Blastocyst_72
+#  - 20230101_Blastocyst_77
+#  - 20230101_Blastocyst_78
+#  - 20230103_Blastocyst_79
+#  - 20230103_Blastocyst_80
+#  - 20230103_Blastocyst_81
+#  - 20230105_Blastocyst_83
+#  - 20230108_Blastocyst_82
+#  - 20230220_Blastocyst_85
+#  - 20230220_Blastocyst_86
+#  - 20230220_Blastocyst_87
+#  - 20230220_Blastocyst_88
+THREADS: 12
+BARCODES: data/nanopore_96_barcodes.fa
+TABLE: data/NanoNASCseq.csv
+
+HUMAN_GENOME_FASTA: /home/chenzonggui/species/homo_sapiens/GRCh38.p13/GRCh38.canonical.genome.fa
+HUMAN_SPLICE_MMI: /home/chenzonggui/species/homo_sapiens/GRCh38.p13/GRCh38.canonical.mm2.splice.mmi
+HUMAN_TRANSCRIPT_BED: /home/chenzonggui/species/homo_sapiens/GRCh38.p13/gencode.v39.annotation.transcripts.bed
+HUMAN_TRANSCRIPT_BED_GZ: /home/chenzonggui/species/homo_sapiens/GRCh38.p13/gencode.v39.annotation.transcripts.bed.gz
+HUMAN_SNP_BED_GZ: /home/chenzonggui/species/homo_sapiens/hg38/snp151.3.lite.bed.gz
+HUMAN_SNP_VCF_GZ: ../3_RNAseq_ActD/results/snps/vcfs/20221128_K562_Actd_0h_rep1.vcf.gz
+HUMAN_ANNOTATION_GTF: /home/chenzonggui/species/homo_sapiens/GRCh38.p13/gencode.v39.annotation.sorted.gtf
+HUMAN_TRANSCRIPT_INFO_TSV: /home/chenzonggui/species/homo_sapiens/GRCh38.p13/gencode.v39.transcript_info.tsv
+
+MOUSE_GENOME_FASTA: /home/chenzonggui/species/mus_musculus/GRCm38.p6/GRCm38.canonical.genome.fa
+MOUSE_SPLICE_MMI: /home/chenzonggui/species/mus_musculus/GRCm38.p6/GRCm38.canonical.mm2.splice.mmi
+MOUSE_TRANSCRIPT_BED: /home/chenzonggui/species/mus_musculus/GRCm38.p6/gencode.vM25.annotation.transcripts.bed
+MOUSE_TRANSCRIPT_BED_GZ: /home/chenzonggui/species/mus_musculus/GRCm38.p6/gencode.vM25.annotation.transcripts.bed.gz
+MOUSE_SNP_BED_GZ: /home/chenzonggui/species/mus_musculus/mm10/snp142.3.lite.bed.gz
+# MOUSE_SNP_VCF_GZ: /home/chenzonggui/species/mus_musculus/mgp/C57BL_6NJ_DBA_2J.mgp.v5.snps.dbSNP142.vcf.gz
+MOUSE_SNP_VCF_GZ: /home/chenzonggui/repositories/GRCm38_B6D2F1_SNP_Indel/GRCm38_C57BL_6NJ_DBA_2J_SNP_Indel.vcf.gz
+MOUSE_ANNOTATION_GTF: /home/chenzonggui/species/mus_musculus/GRCm38.p6/gencode.vM25.annotation.sorted.gtf
+MOUSE_TRANSCRIPT_INFO_TSV: /home/chenzonggui/species/mus_musculus/GRCm38.p6/gencode.vM25.transcript_info.tsv
+
+# EXOSC2AID_GENOME_FASTA: /home/chenzonggui/species/mouse_rna_exosome/GRCm38_with_hEXOSC2.fasta
+# EXOSC2AID_SPLICE_MMI: /home/chenzonggui/species/mouse_rna_exosome/GRCm38_with_hEXOSC2.splice.mmi
+# EXOSC2AID_TRANSCRIPT_BED: /home/chenzonggui/species/mouse_rna_exosome/transcripts.bed
+# EXOSC2AID_TRANSCRIPT_BED_GZ: /home/chenzonggui/species/mouse_rna_exosome/transcripts.bed.GZ
+# EXOSC2AID_SNP_BED_GZ: /home/chenzonggui/species/mouse_rna_exosome/snps.bed.gz
+# EXOSC2AID_ANNOTATION_GTF: /home/chenzonggui/species/mouse_rna_exosome/GRCm38_with_hEXOSC2.gtf
+
