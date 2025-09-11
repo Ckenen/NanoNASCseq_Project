@@ -26,3 +26,5 @@ Run the following commands step by step to reproduce the analysis process.
 Schematic of the workflow:
 
 ![Workflow](./data/NanoNASCseq_Workflow.png)
+
+For the simplified workflow from raw `FASTQ` to pseudo-bulk expression (`CSV`) and expression matrix (`H5AD`), please refer to https://github.com/Ckenen/NanoNASCseq_Pipeline
