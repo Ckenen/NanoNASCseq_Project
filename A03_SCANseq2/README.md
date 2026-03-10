@@ -39,7 +39,7 @@ The pipeline includes 3 steps described as follows:
 
 Yield of sequencing data
 
-![Figure](figures/nascseq2_filter_propotion.png)
+![Figure](analysis/nascseq2_filter_propotion.png)
 
 Summary:
 

@@ -2,19 +2,19 @@
 configfile: "config.yaml"
 SAMPLES = config["SAMPLES"]
 SRRS = [sample.split("_")[0] for sample in SAMPLES]
-OUTDIR = "results/01_prepare"
+OUTDIR = "results/1_prepare"
 
 rule all:
     input:
-        # expand(OUTDIR + "/01_sra/{srr}.sra", srr=SRRS),
-        expand(OUTDIR + "/02_fastq/{sample}.fastq.gz", sample=SAMPLES),
-        expand(OUTDIR + "/03_read_count/{sample}.txt", sample=SAMPLES),
+        # expand(OUTDIR + "/1_sra/{srr}.sra", srr=SRRS),
+        expand(OUTDIR + "/2_fastq/{sample}.fastq.gz", sample=SAMPLES),
+        expand(OUTDIR + "/3_read_count/{sample}.txt", sample=SAMPLES),
         
 rule prefetch:
     output:
-        sra = OUTDIR + "/01_sra/{srr}.sra"
+        sra = OUTDIR + "/1_sra/{srr}.sra"
     log:
-        OUTDIR + "/01_sra/{srr}.log"
+        OUTDIR + "/1_sra/{srr}.log"
     conda:
         "sratools"
     shell:
@@ -24,11 +24,11 @@ rule prefetch:
 
 rule sra2fastq:
     input:
-        sra = lambda wildcards: OUTDIR + "/01_sra/%s.sra" % wildcards.sample.split("_")[0]
+        sra = lambda wildcards: OUTDIR + "/1_sra/%s.sra" % wildcards.sample.split("_")[0]
     output:
-        fq = OUTDIR + "/02_fastq/{sample}.fastq.gz"
+        fq = OUTDIR + "/2_fastq/{sample}.fastq.gz"
     log:
-        OUTDIR + "/02_fastq/{sample}.log"
+        OUTDIR + "/2_fastq/{sample}.log"
     threads:
         12
     conda:
@@ -43,7 +43,7 @@ rule get_read_count:
     input:
         fq = rules.sra2fastq.output.fq
     output:
-        txt = OUTDIR + "/03_read_count/{sample}.txt"
+        txt = OUTDIR + "/33_read_count/{sample}.txt"
     shell:
         """
         zcat {input.fq} | wc -l | awk '{{print $1/4}}' > {output.txt}

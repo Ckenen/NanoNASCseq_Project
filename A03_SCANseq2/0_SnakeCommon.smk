@@ -14,7 +14,6 @@ for read in SeqIO.parse(config["BARCODE_FASTA"], "fasta"):
     seq1 = str(read.seq)
     seq2 = str(read.seq.reverse_complement())
     BARCODES[read.name] = [seq1, seq2]
-# print(barcodes)
 
 def get_species(cell):
     if "_Human_" in cell:
