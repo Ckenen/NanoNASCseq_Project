@@ -5,5 +5,8 @@ SAMPLES:
  - GSM2545324_K562_PROseq_preseq_0min_plus_rep1
  - GSM2545325_K562_PROseq_preseq_0min_plus_rep2
  - GSM3452725_K562_PROseq
-RIBO_BOWTIE2_INDEX: /home/chenzonggui/species/homo_sapiens/ncbi/bt2_rrna_index
-GENOME_STAR_INDEX: /home/chenzonggui/species/genome_index/STAR_2.7.9a/star_genome_GRCh38.p13.canonical_gencode.v39
+FQDIR: data/fastqs
+FASTA: ../share/homo_sapiens/GRCh38.p13/GRCh38.canonical.genome.fa
+GTF: ../share/homo_sapiens/GRCh38.p13/gencode.v39.annotation.sorted.gtf
+FASTA_RIBO: ../share/homo_sapiens/ncbi/ribosomal_rna.fasta
+TRANSCRIPT_BED_GZ: ../share/homo_sapiens/GRCh38.p13/gencode.v39.transcripts.bed.gz
