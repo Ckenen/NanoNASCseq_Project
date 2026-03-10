@@ -14,8 +14,6 @@ Please find the detailed description for the specific method in the correspondin
 | 3_RNAseq_ActD | The analysis of **RNA-seq** under **ActD treatment**. |
 | A01_PROseq_K562 | The analysis of **PRO-seq** datasets. |
 | A02_TTseq_K562 | The analysis of **TT-seq** datasets. |
-| A03_NASCseq_K562_PE | The analysis of **NASC-seq** datasets from **GSE128273** (paired-end). |
-| A04_NASCseq_K562_SE | The analysis of **NASC-seq** datasets from **GSE128273** (single-end). |
 | A05_SCANseq2 | The analysis of **SCAN-seq2** datasets from **GSE203561**. |
 | A06_scCOLORseq | The analysis of **scCOLOR-seq** datasets from **GSE162053**. |
 | A07_GSE141851_scNTseq | The analysis of **scNT-seq** datasets from **GSE141851**.. |
