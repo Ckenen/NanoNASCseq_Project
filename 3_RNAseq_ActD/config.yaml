@@ -10,16 +10,16 @@ SPECIES:
  - human
  - fly
 
-RIBO_BOWTIE2_INDEX: /home/chenzonggui/species/homo_sapiens/ncbi/bt2_rrna_index
+FASTA_RIBO: ../share/homo_sapiens/ncbi/ribosomal_rna.fasta
 
-HUMAN_FASTA: /home/chenzonggui/species/homo_sapiens/GRCh38.p13/GRCh38.primary_assembly.genome.fa
-HUMAN_GTF: /home/chenzonggui/species/homo_sapiens/GRCh38.p13/gencode.v39.annotation.sorted.gtf
-HUMAN_TRANSCRIPT_BED: /home/chenzonggui/species/homo_sapiens/GRCh38.p13/gencode.v39.annotation.transcripts.bed.gz
-HUMAN_ANNOTATION_CSV: /home/chenzonggui/species/homo_sapiens/GRCh38.p13/gencode.v39.transcript_info.csv
+HUMAN_FASTA: ../share/homo_sapiens/GRCh38.p13/GRCh38.primary_assembly.genome.fa
+HUMAN_GTF: ../share/homo_sapiens/GRCh38.p13/gencode.v39.annotation.sorted.gtf
+HUMAN_TRANSCRIPT_BED: ../share/homo_sapiens/GRCh38.p13/gencode.v39.transcripts.bed.gz
+HUMAN_ANNOTATION_CSV: ../share/homo_sapiens/GRCh38.p13/gencode.v39.transcript_info.added_canonical.csv
 HUMAN_SEQNAME_PATTERN: ^chr([0-9]+|[XY])$
 
-FLY_FASTA: /home/chenzonggui/species/drosophila_melanogaster/Drosophila_melanogaster.BDGP6.32.dna_sm.toplevel.fa
-FLY_GTF: /home/chenzonggui/species/drosophila_melanogaster/Drosophila_melanogaster.BDGP6.32.108.gtf
-FLY_TRANSCRIPT_BED: /home/chenzonggui/species/drosophila_melanogaster/Drosophila_melanogaster.BDGP6.32.108.transcripts.bed.gz
-FLY_ANNOTATION_CSV: /home/chenzonggui/species/drosophila_melanogaster/Drosophila_melanogaster.BDGP6.32.108.transcript_info.csv
+FLY_FASTA: ../share/drosophila_melanogaster/Drosophila_melanogaster.BDGP6.32.dna_sm.toplevel.fa
+FLY_GTF: ../share/drosophila_melanogaster/Drosophila_melanogaster.BDGP6.32.108.gtf
+FLY_TRANSCRIPT_BED: ../share/drosophila_melanogaster/Drosophila_melanogaster.BDGP6.32.108.transcripts.bed.gz
+FLY_ANNOTATION_CSV: ../share/drosophila_melanogaster/Drosophila_melanogaster.BDGP6.32.108.transcript_info.csv
 FLY_SEQNAME_PATTERN: ^(2L|2R|3L|3R|[4XY])$
