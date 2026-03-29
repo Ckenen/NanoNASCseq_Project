@@ -10,14 +10,14 @@ rule all:
     input:
         OUTDIR + "/0_index/ribosomal_bowtie2.idx",
         OUTDIR + "/0_index/genome_star.idx",
-        # expand(OUTDIR + "/1_cutadapt/{sample}_R1.fastq.gz", sample=SAMPLES),
-        expand(OUTDIR + "/2_bowtie2/{sample}.unmapped.fastq.1.gz", sample=SAMPLES),
-        expand(OUTDIR + "/3_star/{sample}.Aligned.sortedByCoord.out.bam", sample=SAMPLES),
-        expand(OUTDIR + "/4_bams/{sample}.{species}.{group}.bam", sample=SAMPLES, species=SPECIES, group=GROUPS),
-        expand(OUTDIR + "/4_bams/{sample}.{species}.{group}.flagstat", sample=SAMPLES, species=SPECIES, group=GROUPS),
-        expand(OUTDIR + "/4_bams/{sample}.{species}.{group}.fpkm.tsv", sample=SAMPLES, species=SPECIES, group=GROUPS),
-        expand(OUTDIR + "/4_bams/{sample}.{species}.{group}.read_location.tsv", sample=SAMPLES, species=SPECIES, group=GROUPS),
-        expand(OUTDIR + "/4_bams/{sample}.{species}.{group}.intron_count.tsv", sample=SAMPLES, species=SPECIES, group=GROUPS),
+        expand(OUTDIR + "/1_fastqs/cutadapt/{sample}_R1.fastq.gz", sample=SAMPLES),
+        expand(OUTDIR + "/1_fastqs/bowtie2/{sample}.unmapped.fastq.1.gz", sample=SAMPLES),
+        expand(OUTDIR + "/2_bams/star/{sample}.bam", sample=SAMPLES),
+        expand(OUTDIR + "/2_bams/{group}/{species}/{sample}.bam", group=GROUPS, sample=SAMPLES, species=SPECIES),
+        expand(OUTDIR + "/2_bams/{group}/{species}/{sample}.flagstat", group=GROUPS, sample=SAMPLES, species=SPECIES),
+        expand(OUTDIR + "/3_quantify/fpkm/{group}/{species}/{sample}.tsv", group=GROUPS, sample=SAMPLES, species=SPECIES),
+        expand(OUTDIR + "/3_quantify/intron_count/{group}/{species}/{sample}.tsv", sample=SAMPLES, species=SPECIES, group=GROUPS),
+        expand(OUTDIR + "/4_stats/read_location/{group}/{species}/{sample}.tsv", sample=SAMPLES, species=SPECIES, group=GROUPS),
 
 # Building index
 
@@ -72,12 +72,12 @@ rule cutadapt:
         fq1 = FQDIR + "/{sample}_R1.fastq.gz",
         fq2 = FQDIR + "/{sample}_R2.fastq.gz"
     output:
-        fq1 = OUTDIR + "/1_cutadapt/{sample}_R1.fastq.gz",
-        fq2 = OUTDIR + "/1_cutadapt/{sample}_R2.fastq.gz"
+        fq1 = OUTDIR + "/1_fastqs/cutadapt/{sample}_R1.fastq.gz",
+        fq2 = OUTDIR + "/1_fastqs/cutadapt/{sample}_R2.fastq.gz"
     conda:
         "cutadapt"
     log:
-        OUTDIR + "/1_cutadapt/{sample}.log"
+        OUTDIR + "/1_fastqs/cutadapt/{sample}.log"
     threads:
         12
     shell:
@@ -95,16 +95,16 @@ rule bowtie2:
         fq2 = rules.cutadapt.output.fq2,
         idx = rules.bowtie2_build.output.idx,
     output:
-        bam = temp(OUTDIR + "/2_bowtie2/{sample}.bam"),
-        bai = temp(OUTDIR + "/2_bowtie2/{sample}.bam.bai"),
-        fq1 = OUTDIR + "/2_bowtie2/{sample}.unmapped.fastq.1.gz",
-        fq2 = OUTDIR + "/2_bowtie2/{sample}.unmapped.fastq.2.gz"
+        bam = temp(OUTDIR + "/1_fastqs/bowtie2/{sample}.bam"),
+        bai = temp(OUTDIR + "/1_fastqs/bowtie2/{sample}.bam.bai"),
+        fq1 = OUTDIR + "/1_fastqs/bowtie2/{sample}.unmapped.fastq.1.gz",
+        fq2 = OUTDIR + "/1_fastqs/bowtie2/{sample}.unmapped.fastq.2.gz"
     log:
-        OUTDIR + "/2_bowtie2/{sample}.log"
+        OUTDIR + "/1_fastqs/bowtie2/{sample}.log"
     conda:
         "bowtie2"
     params:
-        prefix = OUTDIR + "/2_bowtie2/{sample}"
+        prefix = OUTDIR + "/1_fastqs/bowtie2/{sample}"
     threads:
         12
     shell:
@@ -122,11 +122,11 @@ rule star:
         fq2 = rules.bowtie2.output.fq2,
         idx = rules.star_build.output.idx
     output:
-        bam = OUTDIR + "/3_star/{sample}.Aligned.sortedByCoord.out.bam"
+        bam = OUTDIR + "/2_bams/star/{sample}.bam"
     log:
-        OUTDIR + "/3_star/{sample}.log"
+        OUTDIR + "/2_bams/star/{sample}.log"
     params:
-        prefix = OUTDIR + "/3_star/{sample}."
+        prefix = OUTDIR + "/2_bams/star/{sample}"
     conda:
         "star"
     threads:
@@ -135,23 +135,24 @@ rule star:
         """(
         mkdir -p {output}
         STAR --runThreadN {threads} \
-            --outFileNamePrefix {params.prefix} \
+            --outFileNamePrefix {params.prefix}. \
             --genomeDir {input.idx} \
             --readFilesCommand zcat \
             --outSAMattributes All \
             --outSAMtype BAM SortedByCoordinate \
             --limitBAMsortRAM 150000000000 \
-            --readFilesIn {input.fq1} {input.fq2} ) &> {log}
+            --readFilesIn {input.fq1} {input.fq2} 
+        mv {params.prefix}.Aligned.sortedByCoord.out.bam {output.bam} ) &> {log}
         """
 
 rule filter_and_split: # filter and split
     input:
         bam = rules.star.output.bam
     output:
-        bam = OUTDIR + "/4_bams/{sample}.{species}.filtered.bam",
-        bai = OUTDIR + "/4_bams/{sample}.{species}.filtered.bam.bai"
+        bam = OUTDIR + "/2_bams/filtered/{species}/{sample}.bam",
+        bai = OUTDIR + "/2_bams/filtered/{species}/{sample}.bam.bai"
     log:
-        OUTDIR + "/4_bams/{sample}.{species}.filtered.log"
+        OUTDIR + "/2_bams/filtered/{species}/{sample}.log"
     params:
         pattern = lambda wildcards: config["%s_SEQNAME_PATTERN" % wildcards.species.upper()]
     threads:
@@ -167,10 +168,10 @@ rule rmdup:
     input:
         bam = rules.filter_and_split.output.bam
     output:
-        bam = OUTDIR + "/4_bams/{sample}.{species}.rmdup.bam",
-        bai = OUTDIR + "/4_bams/{sample}.{species}.rmdup.bam.bai"
+        bam = OUTDIR + "/2_bams/rmdup/{species}/{sample}.bam",
+        bai = OUTDIR + "/2_bams/rmdup/{species}/{sample}.bam.bai"
     log:
-        OUTDIR + "/4_bams/{sample}.{species}.rmdup.log"
+        OUTDIR + "/2_bams/rmdup/{species}/{sample}.log"
     threads:
         4
     shell:
@@ -181,13 +182,13 @@ rule rmdup:
 
 rule calculate_fpkm:
     input:
-        bam = OUTDIR + "/4_bams/{sample}.{species}.{group}.bam",
+        bam = OUTDIR + "/2_bams/{group}/{species}/{sample}.bam",
         bed = lambda wildcards: config["%s_TRANSCRIPT_BED" % wildcards.species.upper()],
         tsv = lambda wildcards: config["%s_ANNOTATION_CSV" % wildcards.species.upper()]
     output:
-        tsv = OUTDIR + "/4_bams/{sample}.{species}.{group}.fpkm.tsv"
+        tsv = OUTDIR + "/3_quantify/fpkm/{group}/{species}/{sample}.tsv"
     log:
-        OUTDIR + "/4_bams/{sample}.{species}.{group}.fpkm.log"
+        OUTDIR + "/3_quantify/fpkm/{group}/{species}/{sample}.log"
     threads:
         8
     shell:
@@ -197,13 +198,13 @@ rule calculate_fpkm:
 
 rule quantify_introns:
     input:
-        bam = OUTDIR + "/4_bams/{sample}.{species}.{group}.bam",
+        bam = OUTDIR + "/2_bams/{group}/{species}/{sample}.bam",
         fa = lambda wildcards: config["%s_FASTA" % wildcards.species.upper()],
         bed = lambda wildcards: config["%s_TRANSCRIPT_BED" % wildcards.species.upper()]
     output:
-        tsv = OUTDIR + "/4_bams/{sample}.{species}.{group}.intron_count.tsv"
+        tsv = OUTDIR + "/3_quantify/intron_count/{group}/{species}/{sample}.tsv"
     log:
-        OUTDIR + "/4_bams/{sample}.{species}.{group}.intron_count.log"
+        OUTDIR + "/3_quantify/intron_count/{group}/{species}/{sample}.log"
     threads:
         8
     shell:
@@ -213,14 +214,14 @@ rule quantify_introns:
 
 rule stat_read_location:
     input:
-        bam = OUTDIR + "/4_bams/{sample}.{species}.{group}.bam",
+        bam = OUTDIR + "/2_bams/{group}/{species}/{sample}.bam",
         bed = lambda wildcards: config["%s_TRANSCRIPT_BED" % wildcards.species.upper()]
     output:
-        bed1 = temp(OUTDIR + "/4_bams/{sample}.{species}.{group}.read_location.bed"),
-        bed2 = OUTDIR + "/4_bams/{sample}.{species}.{group}.read_location.bed.gz",
-        tsv = OUTDIR + "/4_bams/{sample}.{species}.{group}.read_location.tsv"
+        bed1 = temp(OUTDIR + "/4_stats/read_location/{group}/{species}/{sample}.bed"),
+        bed2 = OUTDIR + "/4_stats/read_location/{group}/{species}/{sample}.bed.gz",
+        tsv = OUTDIR + "/4_stats/read_location/{group}/{species}/{sample}.tsv"
     log:
-        OUTDIR + "/4_bams/{sample}.{species}.{group}.read_location.log"
+        OUTDIR + "/4_stats/read_location/{group}/{species}/{sample}.log"
     threads:
         8
     shell:
@@ -231,7 +232,7 @@ rule stat_read_location:
 
 # Common rules
 
-rule bam_flagstat:
+rule flagstat:
     input:
         bam = "{prefix}.bam"
     output:

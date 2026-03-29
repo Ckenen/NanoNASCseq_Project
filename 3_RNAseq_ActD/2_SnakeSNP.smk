@@ -1,7 +1,7 @@
 #!/usr/bin/env runsnakemake
 configfile: "config.yaml"
 SAMPLES = config["SAMPLES"]
-INDIR = "results/1_rnaseq/4_bams"
+INDIR = "results/1_rnaseq/2_bams/rmdup/human"
 OUTDIR = "results/2_snps"
 
 rule all:
@@ -14,7 +14,7 @@ rule all:
 
 rule call_het_snps:
     input:
-        bam = INDIR + "/{sample}.human.rmdup.bam"
+        bam = INDIR + "/{sample}.bam"
     output:
         vcf = temp(OUTDIR + "/1_vcfs/{sample}.vcf"),
         vcf_gz = OUTDIR + "/1_vcfs/{sample}.vcf.gz"
