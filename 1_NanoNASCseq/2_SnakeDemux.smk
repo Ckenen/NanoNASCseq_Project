@@ -5,11 +5,11 @@ OUTDIR = "results/2_demux"
 
 rule all:
     input:
-        #expand(OUTDIR + "/1_barcodes/{run}.fa", run=RUNS),
-        #expand(OUTDIR + "/2_fbilr/{run}.tsv.gz", run=RUNS),
+        expand(OUTDIR + "/1_barcodes/{run}.fa", run=RUNS),
+        expand(OUTDIR + "/2_fbilr/{run}.tsv.gz", run=RUNS),
         expand(OUTDIR + "/2_fbilr/{run}.stats.csv.gz", run=RUNS),
-        #expand(OUTDIR + "/3_splitted/{run}", run=RUNS),
-        #expand(OUTDIR + "/4_trimmed/{run_cell}", run_cell=RUN_CELLS),
+        expand(OUTDIR + "/3_splitted/{run}", run=RUNS),
+        expand(OUTDIR + "/4_trimmed/{run_cell}", run_cell=RUN_CELLS),
 
 rule get_barcodes:
     input:

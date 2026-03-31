@@ -1,20 +1,35 @@
 #!/usr/bin/env runsnakemake
 include: "0_SnakeCommon.smk"
-GTFDIR = "results/5_expression/2_collapsed"
+
+EVENTDIR = "results/4_mismatch/2_mismatch_ratios/3_consensus"
+ALLELEDIR = "results/5_expression/1_expressed_alleles"
 BEDDIR = "results/5_expression/2_collapsed"
+
 OUTDIR = "results/8_expression_novel"
-RUN_CELLS = RUN_CELLS_CELLLINE + RUN_CELLS_BLASTOCYST
+
+# RUN_CELLS = RUN_CELLS[:1]
+GROUPS = ['K562', 'mESC', 'MouseBlastocyst']
+CUTOFFS = ["min_read_1_min_tc_1", "min_read_2_min_tc_1", "min_read_2_min_tc_2"]
+
+RUN_CELLS = list(filter(lambda x: get_cell_type(x.split("/")[1]) in GROUPS, RUN_CELLS))
 
 rule all:
     input:
         expand(OUTDIR + "/1_isoform_category/{run_cell}.tsv", run_cell=RUN_CELLS),
-        # expand(OUTDIR + "/2_quant_isoforms/min_read_1_min_tc_1/{run_cell}.tsv", run_cell=RUN_CELLS),
-        # expand(OUTDIR + "/2_quant_isoforms/min_read_2_min_tc_1/{run_cell}.tsv", run_cell=RUN_CELLS),
-        expand(OUTDIR + "/2_quant_isoforms/min_read_2_min_tc_2/{run_cell}.tsv", run_cell=RUN_CELLS),
+        expand(OUTDIR + "/2_quant_isoforms/{cutoff}/{run_cell}.tsv", cutoff=CUTOFFS, run_cell=RUN_CELLS),
 
 def get_novel_gtf(cell):
-    group = get_group(cell)
-    return "results/7_assembly_custom/4_gtf/%s.all.gtf" % group
+    ct = get_cell_type(cell)
+    if ct == "K562" or ct == "K562_Mix" or ct == "K562_FUCCI":
+        group = "K562"
+    elif ct == "mESC" or ct == "mESC_Mix" or ct == "mESC_EXOSC2":
+        group = "mESC"
+    elif ct == "MouseBlastocyst" or ct == "Mouse2C" or ct == "MouseBigCell" or ct == "MouseMII":
+        group = "MouseBlastocyst"
+    else:
+        print(ct)
+        assert False
+    return "results/7_assembly_novel/4_gtf/%s.all.gtf" % group
 
 rule stat_isoform_category:
     input:
@@ -32,8 +47,8 @@ rule stat_isoform_category:
 rule quant_isoforms:
     input:
         stat_tsv = rules.stat_isoform_category.output.tsv,
-        event_tsv = "results/4_mismatch/04_ratio_consensus/{run}/{cell}.events.tsv",
-        allele_tsv = "results/5_expression/01_expressed_alleles/{run}/{cell}.tsv"
+        event_tsv = EVENTDIR + "/{run}/{cell}.events.tsv",
+        allele_tsv = ALLELEDIR +"/{run}/{cell}.tsv"
     output:
         tsv = OUTDIR + "/2_quant_isoforms/min_read_{size}_min_tc_{tc}/{run}/{cell}.tsv"
     log:

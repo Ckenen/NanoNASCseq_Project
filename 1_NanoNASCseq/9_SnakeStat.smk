@@ -7,11 +7,11 @@ OUTDIR = "results/9_stat"
 rule all:
     input:
         #expand(OUTDIR + "/1_read_location/{run_cell}_summary.tsv", run_cell=RUN_CELLS),
-        expand(OUTDIR + "/2_snr_raw/{run_cell}.snr.csv", run_cell=RUN_CELLS),
-        expand(OUTDIR + "/2_snr_corrected/{run_cell}.snr.csv", run_cell=RUN_CELLS),
-        expand(OUTDIR + "/2_snr_linkage/{run_cell}.snr.csv", run_cell=RUN_CELLS),
-        #expand(OUTDIR + "/3_depth/{run_cell}.tsv", run_cell=RUN_CELLS),
-        #expand(OUTDIR + "/4_chrom_reads/{run_cell}.tsv", run_cell=RUN_CELLS),
+        #expand(OUTDIR + "/2_snr/raw/{run_cell}.snr.csv", run_cell=RUN_CELLS),
+        #expand(OUTDIR + "/2_snr/corrected/{run_cell}.snr.csv", run_cell=RUN_CELLS),
+        #expand(OUTDIR + "/2_snr/linkage/{run_cell}.snr.csv", run_cell=RUN_CELLS),
+        expand(OUTDIR + "/3_depth/{run_cell}.tsv", run_cell=RUN_CELLS),
+        expand(OUTDIR + "/4_chrom_reads/{run_cell}.tsv", run_cell=RUN_CELLS),
         # expand(OUTDIR + "/5_consensus_accuracy/{run_cell}", run_cell=list(filter(lambda x: x.startswith("20220719_K562_3"), RUN_CELLS))),
 
 
@@ -44,11 +44,11 @@ rule stat_snr_raw:
         bam = "results/4_mismatch/1_tagged_events/{run}/{cell}.bam",
         model = lambda wildcards: get_pe_model(wildcards.cell, "raw"),
     output:
-        ratio = OUTDIR + "/2_snr_raw/{run}/{cell}.ratio.csv",
-        event = OUTDIR + "/2_snr_raw/{run}/{cell}.event.csv",
-        tsv = OUTDIR + "/2_snr_raw/{run}/{cell}.snr.csv"
+        ratio = OUTDIR + "/2_snr/raw/{run}/{cell}.ratio.csv",
+        event = OUTDIR + "/2_snr/raw/{run}/{cell}.event.csv",
+        tsv = OUTDIR + "/2_snr/raw/{run}/{cell}.snr.csv"
     log:
-        OUTDIR + "/2_snr_raw/{run}/{cell}.log"
+        OUTDIR + "/2_snr/raw/{run}/{cell}.log"
     shell:
         """(
         ./scripts/stat/make_one_row_mismatch_ratio.py -i {input.ratio} -o {output.ratio}
@@ -62,11 +62,11 @@ rule stat_snr_corrected:
         event = "results/4_mismatch/4_ratio_consensus/{run}/{cell}.events.tsv",
         model = lambda wildcards: get_pe_model(wildcards.cell, "corrected"),
     output:
-        ratio = OUTDIR + "/2_snr_corrected/{run}/{cell}.ratio.csv",
-        event = OUTDIR + "/2_snr_corrected/{run}/{cell}.event.csv",
-        tsv = OUTDIR + "/2_snr_corrected/{run}/{cell}.snr.csv",
+        ratio = OUTDIR + "/2_snr/corrected/{run}/{cell}.ratio.csv",
+        event = OUTDIR + "/2_snr/corrected/{run}/{cell}.event.csv",
+        tsv = OUTDIR + "/2_snr/corrected/{run}/{cell}.snr.csv",
     log:
-        OUTDIR + "/2_snr_corrected/{run}/{cell}.log"
+        OUTDIR + "/2_snr/corrected/{run}/{cell}.log"
     shell:
         """(
         ./scripts/stat/make_one_row_mismatch_ratio.py -i {input.ratio} -o {output.ratio}
@@ -80,11 +80,11 @@ rule stat_snr_linkage:
         event = "results/4_mismatch/4_ratio_consensus/{run}/{cell}.events.tsv",
         model = lambda wildcards: get_pe_model(wildcards.cell, "linkage"),
     output:
-        ratio = OUTDIR + "/2_snr_linkage/{run}/{cell}.ratio.csv",
-        event = OUTDIR + "/2_snr_linkage/{run}/{cell}.event.csv",
-        tsv = OUTDIR + "/2_snr_linkage/{run}/{cell}.snr.csv",
+        ratio = OUTDIR + "/2_snr/linkage/{run}/{cell}.ratio.csv",
+        event = OUTDIR + "/2_snr/linkage/{run}/{cell}.event.csv",
+        tsv = OUTDIR + "/2_snr/linkage/{run}/{cell}.snr.csv",
     log:
-        OUTDIR + "/2_snr_linkage/{run}/{cell}.log"
+        OUTDIR + "/2_snr/linkage/{run}/{cell}.log"
     shell:
         """(
         ./scripts/stat/make_one_row_mismatch_ratio.py -i {input.ratio} -o {output.ratio}
@@ -92,19 +92,19 @@ rule stat_snr_linkage:
         nasctools EstimateSNR -r {output.ratio} -e {output.event} -m {input.model} -o {output.tsv} ) &> {log}
         """
 
-rule stat_fq_depth:
+rule stat_fastq_depth:
     input:
         fq = "results/2_demux/4_trimmed/{run}/{cell}/trimmed.fastq.gz"
     output:
         tsv = OUTDIR + "/3_depth/{run}/{cell}.tsv"
     shell:
         """
-        ./scripts/stat/stat_fq_depth.sh {input.fq} > {output.tsv}
+        ./scripts/stat/stat_fastq_depth.py {input.fq} {output.tsv}
         """
 
 rule stat_chrom_reads:
     input:
-        bam = "results/3_mapping/1_minimap2/{run}/{cell}.bam"
+        bam = "results/3_mapping/1_bams/minimap2/{run}/{cell}.bam"
     output:
         tsv = OUTDIR + "/4_chrom_reads/{run}/{cell}.tsv"
     threads:
