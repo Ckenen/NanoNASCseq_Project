@@ -1,0 +1,15 @@
+RUNS:
+ - 20220719_K562_3 # K562, 0uM, 3h
+ - 20220719_K562_4 # K562, 50uM, 3h
+ - 20220729_K562_2 # K562, 50uM, 3h
+ - 20220818_mESC_1 # mESC, 0uM/50uM, 3h
+ - 20220818_mESC_2 # mESC, 50uM/400uM, 3h
+ - 20220818_mESC_3 # mESC, 400uM, 3h
+ - 20241121_Mix_1 # Mix
+ - 20241121_Mix_2 # Mix
+ - 20241122_Mix_3 # Mix
+TABLE: ../1_NanoNASCseq/data/NanoNASCseq.xlsx
+HUMAN_GENOME_FASTA: ~/species/homo_sapiens/GRCh38.p13/GRCh38.canonical.genome.fa
+HUMAN_TRANSCRIPT_BED: ~/species/homo_sapiens/GRCh38.p13/gencode.v39.annotation.transcripts.bed
+MOUSE_GENOME_FASTA: ~/species/mus_musculus/GRCm38.p6/GRCm38.canonical.genome.fa
+MOUSE_TRANSCRIPT_BED: ~/species/mus_musculus/GRCm38.p6/gencode.vM25.annotation.transcripts.bed
