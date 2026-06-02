@@ -3,7 +3,9 @@ import sys
 from collections import Counter, defaultdict
 import numpy as np
 import pysam
+from collections import defaultdict, Counter
 from pyBioInfo.IO.File import FastaFile, Alignment
+from nasctools.utils import encode_base_count_str, encode_event_str, decode_event_str
 
 
 def parse_events(s):
@@ -22,7 +24,8 @@ def parse_events(s):
 
 
 def main():
-    f_bam, f_fasta, f_tsv, f_tsv2 = sys.argv[1:]
+    f_bam, f_fasta, prop, f_tsv, f_tsv2 = sys.argv[1:]
+    prop = float(prop)
 
     mapper = {"A": "T", "C": "G", "G": "C", "T": "A", "N": "N"}
 
@@ -87,7 +90,7 @@ def main():
                 confident_events = defaultdict(int)
                 for (pos, ref, alt), count in event_counter.items():
                     cov = covs[pos - start]
-                    if (count >= 0.75 * size) or (cov >= 2 and count >= 0.75 * cov):
+                    if (count >= prop * size) or (cov >= 2 and count >= prop * cov):
                         confident_events["%s-%s" % (ref, alt)] += 1
 
                 if strand == "-":

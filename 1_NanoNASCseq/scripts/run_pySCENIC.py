@@ -15,25 +15,34 @@ import seaborn as sns
 def main():
     # SC_EXP_FNAME = "GSE60361_C1-3005-Expression.txt"
     # OUTDIR = "./"
-    SC_EXP_FNAME = "results/blastocyst/mouse_gene_counts.tsv"
-    GENOME = "mm10"
-    OUTDIR = "results/blastocyst/pySCENIC_output"
+    # SC_EXP_FNAME = "results/blastocyst/mouse_gene_counts.tsv"
+    # GENOME = "mm10"
+    # OUTDIR = "results/blastocyst/pySCENIC_output"
     
     SC_EXP_FNAME, GENOME, OUTDIR = sys.argv[1:]
     
     if not os.path.exists(OUTDIR):
         os.mkdir(OUTDIR)
+        
+    SCENIC_ROOT = "~/software/SCENIC" # TODO: change to your SCENIC cisTarget databases root directory
+    
+    # allTFs_*.txt are downloaded from https://resources.aertslab.org/cistarget/tf_lists/
+    # *.feather are downloaded from https://resources.aertslab.org/cistarget/databases/homo_sapiens/hg38/refseq_r80/mc_v10_clust/gene_based/
+    # and https://resources.aertslab.org/cistarget/databases/mus_musculus/mm10/refseq_r80/mc_v10_clust/gene_based/
+    # motifs*.tbl are downloaded from https://resources.aertslab.org/cistarget/motif2tf/
+    # You should download the necessary files from these locations to the SCENIC_ROOT directory!
     
     if GENOME == "mm10":
-        MM_TFS_FNAME = "/home/chenzonggui/software/SCENIC/allTFs_mm.txt"
-        DATABASES_GLOB = "/home/chenzonggui/software/SCENIC/mm10_*.feather"
-        MOTIF_ANNOTATIONS_FNAME = "/home/chenzonggui/software/SCENIC/motifs-v10nr_clust-nr.mgi-m0.001-o0.0.tbl"
+        MM_TFS_FNAME = os.path.join(SCENIC_ROOT, "allTFs_mm.txt")
+        DATABASES_GLOB = os.path.join(SCENIC_ROOT, "mm10_*.feather")
+        MOTIF_ANNOTATIONS_FNAME = os.path.join(SCENIC_ROOT, "motifs-v10nr_clust-nr.mgi-m0.001-o0.0.tbl")
     elif GENOME == "hg38":
-        MM_TFS_FNAME = "/home/chenzonggui/software/SCENIC/allTFs_hg38.txt"
-        DATABASES_GLOB = "/home/chenzonggui/software/SCENIC/hg38_*.feather"
-        MOTIF_ANNOTATIONS_FNAME = "/home/chenzonggui/software/SCENIC/motifs-v10nr_clust-nr.hgnc-m0.001-o0.0.tbl"
+        MM_TFS_FNAME = os.path.join(SCENIC_ROOT, "allTFs_hg38.txt")
+        DATABASES_GLOB = os.path.join(SCENIC_ROOT, "hg38_*.feather")
+        MOTIF_ANNOTATIONS_FNAME = os.path.join(SCENIC_ROOT, "motifs-v10nr_clust-nr.hgnc-m0.001-o0.0.tbl")
     else:
-        assert False
+        raise NotImplementedError("Genome not supported: {}".format(GENOME))
+        # assert False
     
     ADJACENCIES_FNAME = os.path.join(OUTDIR, "adjacencies.csv")
     MODULES_FNAME = os.path.join(OUTDIR, "modules.p")

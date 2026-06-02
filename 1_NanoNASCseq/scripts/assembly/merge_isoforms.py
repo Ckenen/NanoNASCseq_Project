@@ -48,7 +48,8 @@ def cluster_by_polya(clusters):
 def main():
     f_config, outdir = sys.argv[1:]
 
-    config = pd.read_csv(f_config, sep="\t", header=0)
+    config = pd.read_csv(f_config, sep="\t", header=None)
+    config.columns = ["Cell", "Gtf"]
 
     if not os.path.exists(outdir):
         os.mkdir(outdir)
