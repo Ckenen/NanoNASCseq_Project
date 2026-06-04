@@ -4,6 +4,8 @@ This repository include all the **Source Code** for the entire project. In addit
 
 Please find the detailed description for the specific method in the corresponding sub-directory.
 
+If you are interested in the analysis of the **NanoNASC-seq** dataset, please refer to https://github.com/Ckenen/NanoNASCseq_Pipeline
+
 ## Contents
 
 | Sub-Directory | Description |
